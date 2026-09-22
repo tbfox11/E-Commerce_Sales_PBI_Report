@@ -1,0 +1,124 @@
+table dataset_statistics
+	lineageTag: 53869fee-b5a7-48d3-ad4a-51c5464d2387
+
+	column 'Total Transactions'
+		dataType: int64
+		formatString: 0
+		lineageTag: db963e69-14d5-418a-bf1e-271b6e7dc658
+		summarizeBy: sum
+		sourceColumn: Total Transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Columns'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e3e9514-9989-4307-b196-df874523ec59
+		summarizeBy: sum
+		sourceColumn: Total Columns
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Customers'
+		dataType: int64
+		formatString: 0
+		lineageTag: 56b07bfc-a0d6-4e10-a3d5-3adb4897bdce
+		summarizeBy: sum
+		sourceColumn: Total Customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Products Used'
+		dataType: int64
+		formatString: 0
+		lineageTag: f05cb926-bd0a-4a4d-af87-85e935253204
+		summarizeBy: sum
+		sourceColumn: Total Products Used
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Range'
+		dataType: string
+		lineageTag: 1dfa8e78-05ac-41b3-92a4-9d955c5cc260
+		summarizeBy: none
+		sourceColumn: Date Range
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Revenue'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2a195c9e-4eee-4962-bfdb-c875de87f64b
+		summarizeBy: sum
+		sourceColumn: Total Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Total Profit'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a9ab6646-c844-403b-a666-3bd0277ab696
+		summarizeBy: sum
+		sourceColumn: Total Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Average Order Value'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 75672411-ddb6-47e4-bcf1-d2ad5582b8e0
+		summarizeBy: sum
+		sourceColumn: Average Order Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Average Rating'
+		dataType: double
+		lineageTag: e60cacfa-c22b-458d-8acd-2ed6c6784340
+		summarizeBy: sum
+		sourceColumn: Average Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Return Rate'
+		dataType: double
+		lineageTag: 0de7d1d7-7991-4550-9fdb-acdcbb73bf20
+		summarizeBy: sum
+		sourceColumn: Return Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cancellation Rate'
+		dataType: double
+		lineageTag: 4a0a808c-7468-4f33-8c99-d0b2b6c7a0da
+		summarizeBy: sum
+		sourceColumn: Cancellation Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dataset_statistics = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Marty\Documents\Kaggle Datasets\E-Commerce Sales\dataset_statistics.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Total Transactions", Int64.Type}, {"Total Columns", Int64.Type}, {"Total Customers", Int64.Type}, {"Total Products Used", Int64.Type}, {"Date Range", type text}, {"Total Revenue", Currency.Type}, {"Total Profit", Currency.Type}, {"Average Order Value", Currency.Type}, {"Average Rating", type number}, {"Return Rate", Percentage.Type}, {"Cancellation Rate", Percentage.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

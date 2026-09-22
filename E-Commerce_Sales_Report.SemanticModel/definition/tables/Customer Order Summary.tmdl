@@ -1,0 +1,47 @@
+table 'Customer Order Summary'
+	lineageTag: 00945ee7-3907-4a56-acc9-c856c3a3e5eb
+
+	measure 'Customer Count' = COUNTROWS('Customer Order Summary')
+		formatString: 0
+		lineageTag: 799d63e5-765c-4c5b-91a5-52187eb4b581
+
+	column customer_id
+		lineageTag: b11d6d7d-b1a3-4d8b-899c-cc0ea07d1ea6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ecommerce_sales_customer_analytics_150k[customer_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Count'
+		formatString: 0
+		lineageTag: 35683ce1-b0d2-4687-ad2f-e8a942e9cfa0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Order Count]
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderStat =
+			IF(
+			    'Customer Order Summary'[Order Count] > 1,
+			    "Multiple Orders",
+			    "One Order"
+			)
+		lineageTag: 810db372-edd9-42c2-8a3d-1262c2a4cb57
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Order Summary' = calculated
+		mode: import
+		source =
+				
+				SUMMARIZE(
+				    ecommerce_sales_customer_analytics_150k,
+				    ecommerce_sales_customer_analytics_150k[customer_id],
+				    "Order Count", DISTINCTCOUNT(ecommerce_sales_customer_analytics_150k[order_id])
+				)
+
+	annotation PBI_Id = a1262d2b19db451899eabcc6be072491
+

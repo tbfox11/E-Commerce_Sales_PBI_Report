@@ -1,0 +1,22 @@
+relationship f3d9e30a-5af3-4007-a371-17c606810d3a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ecommerce_sales_customer_analytics_150k.order_date
+	toColumn: LocalDateTable_4abc522d-bbf1-4de4-860f-7da901212861.Date
+
+relationship AutoDetected_4e938d72-d6e1-4e74-83b8-196c359f2bd5
+	fromColumn: ecommerce_sales_customer_analytics_150k.customer_id
+	toColumn: customer_master.customer_id
+
+relationship AutoDetected_94f24d37-6b6f-4e87-b558-ac65991b5bb6
+	fromColumn: order_items.order_id
+	toColumn: ecommerce_sales_customer_analytics_150k.order_id
+
+relationship AutoDetected_f5c7b500-df24-40bf-9d48-a185aa3ec2dd
+	fromColumn: order_items.product_id
+	toColumn: product_catalog.product_id
+
+relationship 8bee8c52-e3a8-4817-b3c6-00a254b7b2f2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ecommerce_sales_customer_analytics_150k.'Last Order Date'
+	toColumn: LocalDateTable_296c9f25-a1e7-4268-ac0b-60425b7ad11a.Date
+

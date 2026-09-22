@@ -1,0 +1,99 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 53.62216291713662,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 50,
+            "y": 160.11884566692061
+          },
+          "nodeIndex": "customer_master",
+          "nodeLineageTag": "b267e4cd-5966-4d8b-b747-0ae34d576863",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 619.62216291713685,
+            "y": 381.0594228334603
+          },
+          "nodeIndex": "dataset_statistics",
+          "nodeLineageTag": "53869fee-b5a7-48d3-ad4a-51c5464d2387",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.20225510460887,
+            "y": 83.886687578619089
+          },
+          "nodeIndex": "ecommerce_sales_customer_analytics_150k",
+          "nodeLineageTag": "c4f5b515-bf3f-4171-aaac-3b4bcaf38d07",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.41040181545577,
+            "y": 6.37869776913206
+          },
+          "nodeIndex": "order_items",
+          "nodeLineageTag": "2965bff0-45d4-47c5-916a-1eb0611567d2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 902.62216291713662,
+            "y": -50
+          },
+          "nodeIndex": "product_catalog",
+          "nodeLineageTag": "7bd46992-cba7-4673-91b7-8d5fabbfffaa",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136.6221629171366,
+            "y": 265.52971141673015
+          },
+          "nodeIndex": "Customer Order Summary",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
